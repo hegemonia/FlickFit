@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
 			new_reviews << Review.new(:movie => movie, :user => @user)
 		end
 
-		@reviews = existing_reviews + new_reviews
+		@reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
 	end
 
 	def create
