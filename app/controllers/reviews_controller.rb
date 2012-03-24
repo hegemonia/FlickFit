@@ -19,4 +19,10 @@ class ReviewsController < ApplicationController
 		Review.create(params[:review].merge({:user_id => current_user.id}))
 		redirect_to reviews_path
 	end
+
+	def update
+		review = Review.find_by_id params[:id]
+		review.update_attributes(params[:review].merge({:user_id => current_user.id}))
+		redirect_to reviews_path
+	end
 end
