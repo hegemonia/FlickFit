@@ -1,0 +1,28 @@
+<div style="border-style:solid">
+	<%= form_for review do |f| %>
+		<h4>
+			Movie Title : <%= review.movie.title %>
+		</h4>
+		<%= f.hidden_field :movie_id %>
+		<h5>
+			Rating :
+		</h5> 
+		<%= f.radio_button :rating, 1   %> 1
+		<%= f.radio_button :rating, 1.5 %> 1.5
+		<%= f.radio_button :rating, 2   %> 2
+		<%= f.radio_button :rating, 2.5 %> 2.5
+		<%= f.radio_button :rating, 3   %> 3
+		<%= f.radio_button :rating, 3.5 %> 3.5
+		<%= f.radio_button :rating, 4   %> 4
+		<%= f.radio_button :rating, 4.5 %> 4.5
+		<%= f.radio_button :rating, 5   %> 5
+		<h5>
+			Confidence :
+		</h5>
+		<%= f.radio_button :confidence, 1 %> 1
+		<%= f.radio_button :confidence, 2 %> 2
+		<%= f.radio_button :confidence, 3 %> 3
+
+		<%= f.submit %>
+	<% end %>
+</div>
