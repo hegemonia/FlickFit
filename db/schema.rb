@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324182215) do
+ActiveRecord::Schema.define(:version => 20120324185002) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reviews", :force => true do |t|
+    t.integer  "rating"
+    t.integer  "confidence"
+    t.integer  "movie_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["user_id", "movie_id"], :name => "index_reviews_on_user_id_and_movie_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
