@@ -16,6 +16,7 @@ FlickFit::Application.routes.draw do
   #   resources :products
   resources :movies
   resources :reviews
+  match 'home' => 'home#index'
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -51,7 +52,7 @@ FlickFit::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'reviews#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

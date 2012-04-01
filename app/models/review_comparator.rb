@@ -1,18 +1,20 @@
 class ReviewComparator
-	def initialize
-		@average_confidence_scores = []
-		@movie_scores = []
-	end
+	def calculate_similarity reviews1_arg, reviews2_arg
+		raise(ReviewCountMismatch, "The length of each review collection must be equal") if reviews1_arg.length != reviews2_arg.length
+    reviews1 = reviews1_arg.dup
+    reviews2 = reviews2_arg.dup
 
-	def calculate_similarity reviews1, reviews2
-		raise(ReviewCountMismatch, "The length of each review collection must be equal") if reviews1.length != reviews2.length
     reviews1.sort_by! {|review| review.movie_id }
     reviews2.sort_by! {|review| review.movie_id }
     movie_count = reviews1.length
+    movie_scores = []
+    average_confidence_scores = []
     while reviews1.any?
-	    @movie_scores << calculate_movie_similarity(reviews1.shift, reviews2.shift)
+	    movie_score, confidence = calculate_movie_similarity(reviews1.shift, reviews2.shift)
+	    average_confidence_scores << confidence
+	    movie_scores << movie_score
 	  end
-    weighted_score = @movie_scores.sum / @average_confidence_scores.sum
+    weighted_score = movie_scores.sum / average_confidence_scores.sum
 
     10 - (weighted_score + (4.0 / movie_count**2))
  	end
@@ -21,9 +23,7 @@ class ReviewComparator
  		square_of_rating_difference = (movie1.rating.to_f - movie2.rating.to_f)**2
  		average_confidence = (movie1.confidence.to_f + movie2.confidence.to_f)/2.0
 
- 		@average_confidence_scores << average_confidence
-
- 		square_of_rating_difference * average_confidence
+ 		return (square_of_rating_difference * average_confidence), average_confidence
  	end
 end
 
