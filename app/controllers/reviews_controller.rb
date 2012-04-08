@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
 		@review = Review.new :movie_id => review_params[:movie_id], :rating => review_params[:rating], :confidence => review_params[:confidence], :user_id => current_user.id
 		@review.save
 		respond_to do |format|
-			format.html { redirect_to reviews_path }
+			format.html { redirect_to home_path }
 			format.js
 		end
 	end
@@ -28,6 +28,6 @@ class ReviewsController < ApplicationController
 	def update
 		review = Review.find_by_id params[:id]
 		review.update_attributes(params[:review].merge({:user_id => current_user.id}))
-		redirect_to reviews_path
+		redirect_to home_path
 	end
 end
