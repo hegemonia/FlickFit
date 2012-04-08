@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 
 		comparator = ReviewComparator.new
 		all_users = User.all
-		@user_comparison_hash = {}
+		user_comparison_hash = {}
 
 		reviewed_movie_ids = existing_reviews.map(&:movie_id)
 		all_users.each do |user|
@@ -23,7 +23,8 @@ class HomeController < ApplicationController
 			other_reviewed_movie_ids = other_user_reviews.map(&:movie_id)
 
 			current_user_reviews = existing_reviews.select {|review| other_reviewed_movie_ids.include? review.movie_id}
-			@user_comparison_hash["#{user.email}"] = comparator.calculate_similarity(current_user_reviews, other_user_reviews) if !other_user_reviews.empty?
+			user_comparison_hash["#{user.email}"] = comparator.calculate_similarity(current_user_reviews, other_user_reviews) if !other_user_reviews.empty?
 		end
+		@peer_scores = user_comparison_hash.sort_by {|k,v| v }.reverse
 	end
 end
