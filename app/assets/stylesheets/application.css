@@ -5,3 +5,5 @@
  *= require_self
  *= require_tree . 
 */
+
+.review_container { border-style:solid }
