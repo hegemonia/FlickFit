@@ -1,5 +1,5 @@
 <div id="review_for_movie_<%= review.movie_id %>">
-	<%= form_for review, :remote => true, :html => {:class => "review_container"} do |f| %>
+	<%= form_for review, :remote => true, :namespace => "movie_#{review.movie_id}", :html => {:class => "review_container"} do |f| %>
 		<h4>
 			Movie Title : <%= review.movie.title %>
 		</h4>
@@ -7,21 +7,33 @@
 		<h5>
 			Rating :
 		</h5> 
-		<%= f.radio_button :rating, 1.0 %> 1.0
-		<%= f.radio_button :rating, 1.5 %> 1.5
-		<%= f.radio_button :rating, 2.0 %> 2.0
-		<%= f.radio_button :rating, 2.5 %> 2.5
-		<%= f.radio_button :rating, 3.0 %> 3.0
-		<%= f.radio_button :rating, 3.5 %> 3.5
-		<%= f.radio_button :rating, 4.0 %> 4.0
-		<%= f.radio_button :rating, 4.5 %> 4.5
-		<%= f.radio_button :rating, 5.0 %> 5.0
+		<%= f.radio_button :rating, 1.0 %>
+		<%= f.label :rating, '1.0 (terrible)', :value => 1.0 %>
+		<%= f.radio_button :rating, 1.5 %>
+		<%= f.label :rating, '1.5', :value => 1.5 %>
+		<%= f.radio_button :rating, 2.0 %>
+		<%= f.label :rating, '2.0 (poor)', :value => 2.0 %>
+		<%= f.radio_button :rating, 2.5 %>
+		<%= f.label :rating, '2.5', :value => 2.5 %>
+		<%= f.radio_button :rating, 3.0 %>
+		<%= f.label :rating, '3.0 (decent)', :value => 3.0 %>
+		<%= f.radio_button :rating, 3.5 %>
+		<%= f.label :rating, '3.5', :value => 3.5 %>
+		<%= f.radio_button :rating, 4.0 %>
+		<%= f.label :rating, '4.0 (good)', :value => 4.0 %>
+		<%= f.radio_button :rating, 4.5 %>
+		<%= f.label :rating, '4.5', :value => 4.5 %>
+		<%= f.radio_button :rating, 5.0 %>
+		<%= f.label :rating, '5.0 (great)', :value => 5.0 %>
 		<h5>
 			Confidence :
 		</h5>
-		<%= f.radio_button :confidence, 1 %> 1
-		<%= f.radio_button :confidence, 2 %> 2
-		<%= f.radio_button :confidence, 3 %> 3
+		<%= f.radio_button :confidence, 1 %>
+		<%= f.label :confidence, 'weakly', :value => 1 %>
+		<%= f.radio_button :confidence, 2 %>
+		<%= f.label :confidence, 'moderately', :value => 2 %>
+		<%= f.radio_button :confidence, 3 %>
+		<%= f.label :confidence, 'strongly', :value => 3 %>
 
 		<%= f.submit "Update" %>
 	<% end %>
