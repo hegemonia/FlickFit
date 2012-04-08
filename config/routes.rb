@@ -14,7 +14,6 @@ FlickFit::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :movies
   resources :reviews
   match 'home' => 'home#index'
   # Sample resource route with options:
