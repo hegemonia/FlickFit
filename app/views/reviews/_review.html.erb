@@ -35,6 +35,9 @@
 		<%= f.radio_button :confidence, 3 %>
 		<%= f.label :confidence, 'strongly', :value => 3 %>
 
+		<div>
+			Predicted Rating: <%= calculate_prediction_score(review, @peer_scores) %>
+		</div>
 		<%= f.submit "Update" %>
 	<% end %>
 </div>

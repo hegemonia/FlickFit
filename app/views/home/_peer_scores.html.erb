@@ -1,6 +1,6 @@
 <div class="peer_score_container">
 	<h4>My peer fit scores (higher is closer):</h4>
 	<% @peer_scores.each do |peer, score| %>
-		<%= peer %> (<%= score %>)
+		<%= peer.email %> (<%= score %>)
 	<% end %>
 </div>

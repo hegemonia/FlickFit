@@ -1,14 +1,14 @@
 class HomeController < ApplicationController
 	before_filter :authenticate_user!
 	def index
-		@user = current_user
-		existing_reviews = Review.where :user_id => @user.id
+		user = current_user
+		existing_reviews = Review.where :user_id => user.id
 
 		unreviewed_movies = existing_reviews.any? ? Movie.where("id not in (?)", existing_reviews.collect {|review| review.movie_id}) : Movie.all
 
 		new_reviews = []
 		unreviewed_movies.each do |movie|
-			new_reviews << Review.new(:movie => movie, :user => @user)
+			new_reviews << Review.new(:movie => movie, :user => user)
 		end
 
 		@reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
@@ -30,7 +30,7 @@ class HomeController < ApplicationController
 
 			reviews_of_the_same_movies = reviews.select {|review| other_reviewed_movie_ids.include? review.movie_id}
 
-			user_comparison_hash["#{user.email}"] = comparator.calculate_similarity(reviews_of_the_same_movies, other_user_reviews) if !other_user_reviews.empty?
+			user_comparison_hash[user] = comparator.calculate_similarity(reviews_of_the_same_movies, other_user_reviews) if !other_user_reviews.empty?
 		end
 		user_comparison_hash.sort_by {|k,v| v }.reverse
 	end
