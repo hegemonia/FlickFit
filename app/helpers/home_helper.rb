@@ -16,6 +16,6 @@ module HomeHelper
 			weights << weight
 			products << (weight * review.rating)
 		end
-		return (products.sum / weights.sum).round(2) if weights && products
+		return (products.sum / weights.sum).round(2) if !weights.empty? && !products.empty?
 	end
 end
