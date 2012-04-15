@@ -17,7 +17,7 @@ describe "ReviewComparator" do
 			toms_reviews = [toms_matrix_review, toms_gladiator_review]
 			richards_reviews = [richards_matrix_review, richards_gladiator_review]
 			similarity_score = ReviewComparator.new.calculate_similarity(toms_reviews, richards_reviews)
-			similarity_score.should == 3
+			similarity_score.should == 2.0
 		end
 
 		it "should raise an exception when the review counts are not equal" do

@@ -18,6 +18,6 @@ describe "HomeHelper" do
 
 		scores_hash = {chris => 9.0, richard => 8.0, anup => 7.0}
 
-		FakeHomeIncluder.new.calculate_prediction_score(Review.new(:movie => matrix), scores_hash).should == 4.05
+		FakeHomeIncluder.new.calculate_prediction_score(Review.new(:movie => matrix), scores_hash).should == 3.97
 	end
 end
