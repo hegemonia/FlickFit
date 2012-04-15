@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 		end
 
 		@reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
-		@peer_scores = calculate_peer_scores @reviews
+		@peer_scores = calculate_peer_scores existing_reviews
 	end
 
 	private
