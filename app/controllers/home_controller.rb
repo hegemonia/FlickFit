@@ -25,6 +25,7 @@ class HomeController < ApplicationController
 		reviewed_movie_ids = reviews.map(&:movie_id)
 
 		all_users.each do |user|
+			next if user == current_user
 			other_user_reviews = user.reviews.select {|review| reviewed_movie_ids.include? review.movie_id }
 			other_reviewed_movie_ids = other_user_reviews.map(&:movie_id)
 
