@@ -11,7 +11,7 @@ module HomeHelper
 		products = []
 		scores_hash.each do |user, peer_score|
 			review = reviews.detect {|rev| rev.user_id == user.id}
-			break unless review
+			next unless review
 			weight = peer_score * review.confidence
 			weights << weight
 			products << (weight * review.rating)
