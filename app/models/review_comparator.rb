@@ -16,14 +16,16 @@ class ReviewComparator
 		end
 		weighted_score = movie_scores.sum / average_confidence_scores.sum
 
-		10 - (weighted_score + (4.0 / movie_count))
+		10 - (weighted_score + (8.0 / movie_count))
 	end
 
 	def calculate_movie_similarity movie1, movie2
-		square_of_rating_difference = (movie1.rating.to_f - movie2.rating.to_f)**2
+		square_of_rating_difference = ((movie1.rating.to_f - movie2.rating.to_f)**2) * 2
 		average_confidence = (movie1.confidence.to_f + movie2.confidence.to_f)/2.0
 
-		return (square_of_rating_difference * average_confidence), average_confidence
+		rating = [square_of_rating_difference, 0].max
+
+		return (rating * average_confidence), average_confidence
 	end
 end
 
