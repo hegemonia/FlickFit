@@ -26,4 +26,10 @@ class MoviesController < ApplicationController
   	movie.update_attributes :title => movie_params[:title]
   	redirect_to movies_path
   end
+
+  def destroy
+    @movie = Movie.find params[:id]
+    @movie.destroy
+    redirect_to movies_path
+  end
 end
