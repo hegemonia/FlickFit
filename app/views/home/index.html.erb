@@ -5,6 +5,8 @@
    </div>
    <% end %>
  <% end %>
- 
+
 <%= render :partial => 'peer_scores' %>
 <%= render :partial => 'reviews/review', :collection => @reviews %>
+
+<%= will_paginate @reviews %>

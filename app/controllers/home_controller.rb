@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
+
+	REVIEWS_PER_PAGE = 10
+	DEFAULT_PAGE_NUMBER = 1
+
 	before_filter :authenticate_user!
 	def index
 		user = current_user
@@ -10,9 +14,11 @@ class HomeController < ApplicationController
 		unreviewed_movies.each do |movie|
 			new_reviews << Review.new(:movie => movie, :user => user)
 		end
-
-		@reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
 		@peer_scores = calculate_peer_scores existing_reviews
+
+		all_reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
+		current_page = params[:page].to_i || DEFAULT_PAGE_NUMBER
+		@reviews = all_reviews.paginate(:page => current_page, :per_page => REVIEWS_PER_PAGE)
 	end
 
 	private

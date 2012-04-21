@@ -127,6 +127,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -143,3 +144,4 @@ DEPENDENCIES
   therubyracer
   turn (= 0.8.2)
   uglifier
+  will_paginate (~> 3.0)
