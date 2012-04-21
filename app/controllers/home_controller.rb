@@ -17,7 +17,7 @@ class HomeController < ApplicationController
 		@peer_scores = calculate_peer_scores existing_reviews
 
 		all_reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
-		current_page = params[:page].to_i || DEFAULT_PAGE_NUMBER
+		current_page = params[:page].present? ? params[:page].to_i : DEFAULT_PAGE_NUMBER
 		@reviews = all_reviews.paginate(:page => current_page, :per_page => REVIEWS_PER_PAGE)
 	end
 
