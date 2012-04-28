@@ -29,11 +29,15 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
-		review = Review.find_by_id params[:id]
-		review.update_attributes(params[:review].merge({:user_id => current_user.id}))
-		redirect_to home_path
+		@review = Review.find_by_id params[:id]
+		@review.update_attributes(params[:review].merge({:user_id => current_user.id}))
+		respond_to do |format|
+			format.html { redirect_to home_path }
+			format.js
+		end
 	end
 
+private
 	def set_peer_scores
 		reviews = Review.where :user_id => current_user.id
 		@peer_scores = calculate_peer_scores reviews
