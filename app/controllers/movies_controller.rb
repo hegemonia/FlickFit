@@ -12,8 +12,13 @@ class MoviesController < ApplicationController
 
   def create
   	movie_params = params[:movie]
-  	Movie.create :title => movie_params[:title]
-		redirect_to movies_path
+  	movie = Movie.new :title => movie_params[:title]
+    if movie.save
+  		redirect_to movies_path
+    else
+      flash[:error] = movie.errors.full_messages.to_sentence
+      redirect_to new_movie_path
+    end
   end
 
   def edit

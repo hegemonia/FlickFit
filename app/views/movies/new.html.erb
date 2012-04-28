@@ -1,3 +1,11 @@
+ <% [:info, :error].each do |key| %>
+   <% if flash[key] %>
+   <div class="<%= key %>" id="flash">
+     <%= flash[key] %>
+   </div>
+   <% end %>
+ <% end %>
+
 <h1>New movie</h1>
 
 <%= render 'form' %>
