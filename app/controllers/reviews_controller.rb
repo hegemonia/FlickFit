@@ -20,7 +20,8 @@ class ReviewsController < ApplicationController
 
 	def create
 		review_params = params[:review]
-		@review = Review.new :movie_id => review_params[:movie_id], :rating => review_params[:rating], :confidence => review_params[:confidence], :user_id => current_user.id
+		confidence = review_params[:confidence].present? ? review_params[:confidence] : Review::DEFAULT_CONFIDENCE
+		@review = Review.new :movie_id => review_params[:movie_id], :rating => review_params[:rating], :confidence => confidence, :user_id => current_user.id
 		@review.save
 		respond_to do |format|
 			format.html { redirect_to home_path }
@@ -30,7 +31,11 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review = Review.find_by_id params[:id]
-		@review.update_attributes(params[:review].merge({:user_id => current_user.id}))
+
+		confidence = params[:review][:confidence].present? ? params[:review][:confidence] : Review::DEFAULT_CONFIDENCE
+		params = params[:review].merge({:user_id => current_user.id, :confidence => confidence})
+
+		@review.update_attributes(params)
 		respond_to do |format|
 			format.html { redirect_to home_path }
 			format.js
