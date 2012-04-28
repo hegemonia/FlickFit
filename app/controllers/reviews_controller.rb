@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
+	include PeerScoreCalculator
+
 	before_filter :authenticate_user!
+	before_filter :set_peer_scores, :only => [:create, :update]
 
 	def index
 		@user = current_user
@@ -29,5 +32,10 @@ class ReviewsController < ApplicationController
 		review = Review.find_by_id params[:id]
 		review.update_attributes(params[:review].merge({:user_id => current_user.id}))
 		redirect_to home_path
+	end
+
+	def set_peer_scores
+		reviews = Review.where :user_id => current_user.id
+		@peer_scores = calculate_peer_scores reviews
 	end
 end
