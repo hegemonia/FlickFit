@@ -31,11 +31,10 @@ class ReviewsController < ApplicationController
 
 	def update
 		@review = Review.find_by_id params[:id]
-
 		confidence = params[:review][:confidence].present? ? params[:review][:confidence] : Review::DEFAULT_CONFIDENCE
-		params = params[:review].merge({:user_id => current_user.id, :confidence => confidence})
+		modified_params = params[:review].merge({:user_id => current_user.id, :confidence => confidence})
 
-		@review.update_attributes(params)
+		@review.update_attributes(modified_params)
 		respond_to do |format|
 			format.html { redirect_to home_path }
 			format.js
