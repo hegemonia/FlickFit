@@ -15,7 +15,7 @@ class ReviewComparator
 			movie_scores << movie_score
 		end
 		weighted_score = movie_scores.sum / average_confidence_scores.sum
-		similarity_score = 10 - (weighted_score + (8.0 / movie_count))
+		similarity_score = (10 - (weighted_score + (8.0 / movie_count))).round(2)
 		[similarity_score, 0].max
 	end
 
