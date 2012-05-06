@@ -4,6 +4,17 @@ module HomeHelper
 		calculate_weighted_average(other_reviews, scores_hash) if !other_reviews.empty?
 	end
 
+	def calculate_average_score review
+		reviews = Review.where(:movie_id => review.movie_id)
+		return 0 unless reviews.any?
+		ratings = reviews.collect {|rev| rev.rating}
+		ratings.sum / ratings.count
+	end
+
+	def number_of_ratings_for movie
+		Review.count(:conditions => {:movie_id => movie.id})
+	end
+
 	private
 
 	def calculate_weighted_average reviews, scores_hash

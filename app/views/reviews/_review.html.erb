@@ -6,7 +6,7 @@
 		<%= f.hidden_field :movie_id %>
 		<h5>
 			Rating :
-		</h5> 
+		</h5>
 		<%= f.radio_button :rating, 1.0 %>
 		<%= f.label :rating, '1.0 (terrible)', :value => 1.0 %>
 		<%= f.radio_button :rating, 1.5 %>
@@ -36,7 +36,13 @@
 		<%= f.label :confidence, 'strongly', :value => 3 %>
 
 		<div>
-			Predicted Rating: <%= calculate_prediction_score(review, @peer_scores) %>
+			<span>
+				Average User Rating: <%= calculate_average_score(review) %> (<%= number_of_ratings_for(review.movie) %> total ratings)
+			<span>
+			<br />
+			<span>
+				Predicted Rating: <%= calculate_prediction_score(review, @peer_scores) %>
+			<span>
 		</div>
 		<%= f.submit "Update" %>
 	<% end %>
