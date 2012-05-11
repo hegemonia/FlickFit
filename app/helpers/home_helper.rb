@@ -8,7 +8,7 @@ module HomeHelper
 		reviews = Review.where(:movie_id => review.movie_id)
 		return 0 unless reviews.any?
 		ratings = reviews.collect {|rev| rev.rating}
-		ratings.sum / ratings.count
+		(ratings.sum / ratings.count).round(2)
 	end
 
 	def number_of_ratings_for movie
