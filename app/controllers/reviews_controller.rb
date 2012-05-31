@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
 		review_params = params[:review]
 		confidence = review_params[:confidence].present? ? review_params[:confidence] : Review::DEFAULT_CONFIDENCE
 		@review = Review.new :movie_id => review_params[:movie_id], :rating => review_params[:rating], :confidence => confidence, :user_id => current_user.id
-		@review.save
+		@review.save unless review_params[:rating].blank?
 		respond_to do |format|
 			format.html { redirect_to home_path }
 			format.js
