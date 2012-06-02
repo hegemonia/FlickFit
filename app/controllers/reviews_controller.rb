@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 	include PeerScoreCalculator
 
 	before_filter :authenticate_user!
-	before_filter :set_peer_scores, :only => [:create, :update]
+	before_filter :set_peer_scores, :only => [:create, :update, :destroy]
 
 	def index
 		@user = current_user

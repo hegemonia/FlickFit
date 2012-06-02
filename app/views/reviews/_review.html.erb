@@ -47,7 +47,7 @@
 
 		<% if review.id? %>
 			<div>
-				<%= link_to "delete", review_path(review), :method=>:delete, :remote=>true, :class=>"remove", :confirm=>'Are you sure you?' %>
+				<%= link_to "delete", review_path(review), :method=>:delete, :remote=>true, :class=>"remove", :confirm=>'Delete this review?' %>
 
 			</div>
 		<% end %>
