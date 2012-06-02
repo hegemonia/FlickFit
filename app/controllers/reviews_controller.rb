@@ -41,6 +41,16 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def destroy
+		review = Review.find_by_id params[:id]
+		@review = Review.new :movie => review.movie, :user => current_user
+		review.destroy
+		respond_to do |format|
+			format.html { redirect_to home_path }
+			format.js
+		end
+	end
+
 private
 	def set_peer_scores
 		reviews = Review.where :user_id => current_user.id

@@ -44,5 +44,12 @@
 				Predicted Rating: <%= calculate_prediction_score(review, @peer_scores) %>
 			<span>
 		</div>
+
+		<% if review.id? %>
+			<div>
+				<%= link_to "delete", review_path(review), :method=>:delete, :remote=>true, :class=>"remove", :confirm=>'Are you sure you?' %>
+
+			</div>
+		<% end %>
 	<% end %>
 </div>

@@ -1,0 +1,1 @@
+$("#review_for_movie_<%= @review.movie_id %>").html("<%= escape_javascript(render :partial => 'review', :object => @review) %>")
