@@ -6,7 +6,8 @@
 development:
   adapter: postgresql
   database: ff_development
-  username: richard
+  username: flickfit
+  password: flickfit
   encoding: utf8
   pool: 5
 
@@ -16,13 +17,15 @@ development:
 test:
   adapter: postgresql
   database: ff_test
-  username: richard
+  username: flickfit
+  password: flickfit
   encoding: utf8
   pool: 5
 
 production:
   adapter: postgresql
   database: ff_production
-  username: richard
+  username: flickfit
+  password: flickfit
   encoding: utf8
   pool: 5
