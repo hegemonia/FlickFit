@@ -14,6 +14,20 @@ module HomeHelper
 	def number_of_ratings_for movie
 		Review.count(:conditions => {:movie_id => movie.id})
 	end
+	
+	def sort_reviews reviews, order_by, direction
+    ordering_callbacks = {
+      "title" => lambda { |reviews| reviews.sort_by {|review| review.movie.title }}, 
+      "predicted rating" => lambda {|reviews| reviews.sort_by {|review| calculate_prediction_score(review, @peer_scores) }},
+      "average rating" => lambda {|reviews| reviews.sort_by {|review| calculate_average_score(review) }}
+    }
+    
+    if !order_by.nil?
+      return ordering_callbacks[order_by].call(reviews)
+    end
+    
+    return ordering_callbacks["title"].call(reviews)
+  end
 
 	private
 

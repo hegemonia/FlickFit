@@ -3,4 +3,11 @@
 	<% @peer_scores.each do |peer, score| %>
 		<%= peer.email %> (<%= score %>)
 	<% end %>
+
+	<div class="sort_by">
+		<%= form_tag home_path, :method => 'get' do %>
+			<span>Sort By:</span>
+			<%= select_tag :order_by, options_for_select(["title", "predicted rating", "average rating"]), :id => "order_reviews" %>
+		<% end %>
+	</div>
 </div>

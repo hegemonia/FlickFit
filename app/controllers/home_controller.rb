@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 	include PeerScoreCalculator
+  include HomeHelper
 
 	before_filter :authenticate_user!
 
@@ -18,8 +19,9 @@ class HomeController < ApplicationController
 		end
 		@peer_scores = calculate_peer_scores existing_reviews
 
-		all_reviews = (existing_reviews + new_reviews).sort_by {|review| review.movie.title}
+		all_reviews = sort_reviews (existing_reviews + new_reviews), params[:order_by], nil
 		current_page = params[:page].present? ? params[:page].to_i : DEFAULT_PAGE_NUMBER
 		@reviews = all_reviews.paginate(:page => current_page, :per_page => REVIEWS_PER_PAGE)
 	end
+  
 end

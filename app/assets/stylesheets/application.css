@@ -9,6 +9,7 @@
 .error {color:red}
 .review_container { border-style:solid }
 .peer_score_container { border-style:solid }
+.sort_by { background: black; color: white; line-height: 30px; text-align: right; padding-right: 10px; padding-top:5px }
 
 .pagination { padding: 3px; margin: 3px; }
 .pagination a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color: #000099; }
