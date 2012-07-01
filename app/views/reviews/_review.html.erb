@@ -4,36 +4,41 @@
 			<%= review.movie.title %>
 		</h4>
 		<%= f.hidden_field :movie_id %>
-		<h5>
-			Rating :
-		</h5>
-		<%= f.radio_button :rating, 1.0 %>
-		<%= f.label :rating, '1.0 (terrible)', :value => 1.0 %>
-		<%= f.radio_button :rating, 1.5 %>
-		<%= f.label :rating, '1.5', :value => 1.5 %>
-		<%= f.radio_button :rating, 2.0 %>
-		<%= f.label :rating, '2.0 (poor)', :value => 2.0 %>
-		<%= f.radio_button :rating, 2.5 %>
-		<%= f.label :rating, '2.5', :value => 2.5 %>
-		<%= f.radio_button :rating, 3.0 %>
-		<%= f.label :rating, '3.0 (decent)', :value => 3.0 %>
-		<%= f.radio_button :rating, 3.5 %>
-		<%= f.label :rating, '3.5', :value => 3.5 %>
-		<%= f.radio_button :rating, 4.0 %>
-		<%= f.label :rating, '4.0 (good)', :value => 4.0 %>
-		<%= f.radio_button :rating, 4.5 %>
-		<%= f.label :rating, '4.5', :value => 4.5 %>
-		<%= f.radio_button :rating, 5.0 %>
-		<%= f.label :rating, '5.0 (great)', :value => 5.0 %>
-		<h5>
-			Confidence (how confident do you feel about that rating?):
-		</h5>
-		<%= f.radio_button :confidence, 1 %>
-		<%= f.label :confidence, 'weakly', :value => 1 %>
-		<%= f.radio_button :confidence, 2 %>
-		<%= f.label :confidence, 'moderately', :value => 2 %>
-		<%= f.radio_button :confidence, 3 %>
-		<%= f.label :confidence, 'strongly', :value => 3 %>
+    <div class="ratings_container">
+      <span style="font-weight:bold; font-size:.8em">
+        Your Rating :
+      </span>
+      <%= f.radio_button :rating, 1.0 %>
+      <%= f.label :rating, '1.0 (terrible)', :value => 1.0 %>
+      <%= f.radio_button :rating, 1.5 %>
+      <%= f.label :rating, '1.5', :value => 1.5 %>
+      <%= f.radio_button :rating, 2.0 %>
+      <%= f.label :rating, '2.0 (poor)', :value => 2.0 %>
+      <%= f.radio_button :rating, 2.5 %>
+      <%= f.label :rating, '2.5', :value => 2.5 %>
+      <%= f.radio_button :rating, 3.0 %>
+      <%= f.label :rating, '3.0 (decent)', :value => 3.0 %>
+      <%= f.radio_button :rating, 3.5 %>
+      <%= f.label :rating, '3.5', :value => 3.5 %>
+      <%= f.radio_button :rating, 4.0 %>
+      <%= f.label :rating, '4.0 (good)', :value => 4.0 %>
+      <%= f.radio_button :rating, 4.5 %>
+      <%= f.label :rating, '4.5', :value => 4.5 %>
+      <%= f.radio_button :rating, 5.0 %>
+      <%= f.label :rating, '5.0 (great)', :value => 5.0 %>
+    </div>
+
+    <div class="confidence_container">
+      <span style="font-weight:bold; font-size:.8em">
+        Confidence (how confident do you feel about that rating?):
+      </span>
+      <%= f.radio_button :confidence, 1 %>
+      <%= f.label :confidence, 'weakly', :value => 1 %>
+      <%= f.radio_button :confidence, 2 %>
+      <%= f.label :confidence, 'moderately', :value => 2 %>
+      <%= f.radio_button :confidence, 3 %>
+      <%= f.label :confidence, 'strongly', :value => 3 %>
+    </div>
 
 		<div>
 			<span>
