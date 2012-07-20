@@ -12,7 +12,28 @@
   <% end %>
 
   <div>
+    <%= f.label :title %>
+  </div>
+  <div>
     <%= f.text_field :title, :maxlength => 60 %>
+  </div>
+  <div>
+    <%= f.label :year %>
+  </div>
+  <div>
+    <%= f.text_field :year, :maxlength => 4 %>
+  </div>
+  <div>
+    <%= f.label :runtime %>
+  </div>
+  <div>
+    <%= f.text_field :runtime, :maxlength => 3 %>
+  </div>
+  <div>
+    <%= f.label :synopsis %>
+  </div>
+  <div>
+    <%= f.text_area :synopsis %>
   </div>
 
   <div class="actions">

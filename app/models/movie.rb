@@ -1,4 +1,7 @@
 class Movie < ActiveRecord::Base
 	has_many :reviews, :dependent => :destroy
   validates_uniqueness_of :title
+  validates :synopsis, :length => { :maximum => 140 }
+  validates :year, :numericality => { :only_integer => true, :greater_than => 999, :less_than => 10000 }
+  validates :runtime, :numericality => { :only_integer => true, :greater_than => 99, :less_than => 1000 }
 end

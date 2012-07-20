@@ -11,13 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def create
-  	movie_params = params[:movie]
-  	movie = Movie.new :title => movie_params[:title]
-    if movie.save
-  		redirect_to movies_path
-    else
-      flash[:error] = movie.errors.full_messages.to_sentence
-      redirect_to new_movie_path
+    create_or_update_movie params do |success|
+      success ? redirect_to(movies_path) : render(:new)
     end
   end
 
@@ -26,15 +21,30 @@ class MoviesController < ApplicationController
   end
 
   def update
-  	movie_params = params[:movie]
-  	movie = Movie.find params[:id]
-  	movie.update_attributes :title => movie_params[:title]
-  	redirect_to movies_path
+    create_or_update_movie params do |success|
+      success ? redirect_to(movies_path) : render(:edit)
+    end
   end
 
   def destroy
     @movie = Movie.find params[:id]
     @movie.destroy
     redirect_to movies_path
+  end
+
+  private
+
+  def create_or_update_movie(params)
+    @movie = params[:id].present? ? Movie.find(params[:id]) : Movie.new
+    movie_params = params[:movie]
+    if @movie.update_attributes :title => movie_params[:title],
+        :runtime => movie_params[:runtime],
+        :synopsis => movie_params[:synopsis],
+        :year => movie_params[:year]
+      yield true
+    else
+      flash[:error] = @movie.errors.full_messages.to_sentence
+      yield false
+    end
   end
 end
