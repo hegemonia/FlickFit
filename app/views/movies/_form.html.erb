@@ -30,6 +30,12 @@
     <%= f.text_field :runtime, :maxlength => 3 %>
   </div>
   <div>
+    <%= label_tag :genres_list, "Genres (comma separated)" %>
+  </div>
+  <div>
+    <%= text_field_tag "movie[genres_list]", comma_separated_list_of(@movie.genres, :name) %>
+  </div>
+  <div>
     <%= f.label :synopsis %>
   </div>
   <div>

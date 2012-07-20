@@ -40,7 +40,8 @@ class MoviesController < ApplicationController
     if @movie.update_attributes :title => movie_params[:title],
         :runtime => movie_params[:runtime],
         :synopsis => movie_params[:synopsis],
-        :year => movie_params[:year]
+        :year => movie_params[:year],
+        :genres => Genre.in_comma_separated_list(movie_params[:genres_list])
       yield true
     else
       flash[:error] = @movie.errors.full_messages.to_sentence
