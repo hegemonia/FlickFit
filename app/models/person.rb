@@ -1,4 +1,4 @@
-class Genre < ActiveRecord::Base
+class Person < ActiveRecord::Base
   include AppearsInCommaSeparatedList
 
   validates_presence_of :name

@@ -1,6 +1,8 @@
 class Movie < ActiveRecord::Base
   has_many :reviews, :dependent => :destroy
   has_and_belongs_to_many :genres
+  has_and_belongs_to_many :directors, :class_name => Person.name, :join_table => "movies_directors"
+  has_and_belongs_to_many :actors, :class_name => Person.name, :join_table => "movies_actors"
 
   validates_uniqueness_of :title
   validates :synopsis, :length => { :maximum => 360 }

@@ -41,7 +41,9 @@ class MoviesController < ApplicationController
         :runtime => movie_params[:runtime],
         :synopsis => movie_params[:synopsis],
         :year => movie_params[:year],
-        :genres => Genre.in_comma_separated_list(movie_params[:genres_list])
+        :genres => Genre.in_comma_separated_list(movie_params[:genres_list]),
+        :directors => Person.in_comma_separated_list(movie_params[:directors_list]),
+        :actors => Person.in_comma_separated_list(movie_params[:actors_list])
       yield true
     else
       flash[:error] = @movie.errors.full_messages.to_sentence

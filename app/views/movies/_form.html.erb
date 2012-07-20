@@ -30,10 +30,22 @@
     <%= f.text_field :runtime, :maxlength => 3 %>
   </div>
   <div>
-    <%= label_tag :genres_list, "Genres (comma separated)" %>
+    <%= label_tag "movie[genres_list]", "Genres (comma separated)" %>
   </div>
   <div>
     <%= text_field_tag "movie[genres_list]", comma_separated_list_of(@movie.genres, :name) %>
+  </div>
+  <div>
+    <%= label_tag "movie[directors_list]", "Directors (comma separated)" %>
+  </div>
+  <div>
+    <%= text_field_tag "movie[directors_list]", comma_separated_list_of(@movie.directors, :name) %>
+  </div>
+  <div>
+    <%= label_tag "movie[actors_list]", "Cast (comma separated)" %>
+  </div>
+  <div>
+    <%= text_field_tag "movie[actors_list]", comma_separated_list_of(@movie.actors, :name) %>
   </div>
   <div>
     <%= f.label :synopsis %>
