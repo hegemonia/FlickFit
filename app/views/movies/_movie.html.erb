@@ -1,0 +1,21 @@
+<div class="movie">
+	<div>
+		<span class="title"><%= movie.title %></span>
+		<span class="attribute"><%= movie.formatted_year %></span>
+		<span class="attribute"><%= movie.formatted_genres %></span>
+		<span class="attribute"><%= movie.formatted_runtime %></span>
+	</div>
+	
+	<div class="smaller_font">
+		<span class="bold">Synopsis: </span><%= movie.formatted_synopsis %>
+	</div>
+	
+	<div class="smaller_font">
+		<span class="bold">Director: </span><%= movie.formatted_directors %>
+	</div>
+	
+	<div class="smaller_font">
+		<span class="bold">Cast: </span><%= movie.formatted_actors %>
+	</div>
+</div>
+

@@ -8,4 +8,36 @@ class Movie < ActiveRecord::Base
   validates :synopsis, :length => { :maximum => 360 }
   validates :runtime, :numericality => { :only_integer => true, :less_than => 1000 }
   validates :year, :numericality => { :only_integer => true, :greater_than => 999, :less_than => 10000 }
+  
+  def formatted_year
+    self.year.nil? ? "Year: N/A" : "(" + self.year.to_s + ")"
+  end
+  
+  def formatted_runtime
+    self.runtime.nil? ? "Runtime: N/A" : self.runtime.to_s + " minutes (" + runtime_hours + " hours, " + runtime_minutes + " minutes)"
+  end
+  
+  def formatted_genres
+    self.genres.empty? ? "Genre: N/A" : self.genres.map! { |genre| genre.name }.join(" | ")
+  end
+  
+  def formatted_synopsis
+    self.synopsis.nil? ? "N/A" : self.synopsis
+  end
+  
+  def formatted_directors
+    self.directors.empty? ? "N/A" : self.directors.map! { |director| director.name }.join(", ")
+  end
+  
+  def formatted_actors
+    self.actors.empty? ? "N/A" : self.actors.map! { |actor| actor.name }.join(", ")
+  end
+  
+  def runtime_hours
+    (self.runtime / 60).to_s
+  end
+  
+  def runtime_minutes
+    (self.runtime % 60).to_s
+  end
 end
