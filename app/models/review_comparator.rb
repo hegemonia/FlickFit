@@ -1,6 +1,7 @@
+class ReviewCountMismatch < Exception; end
 class ReviewComparator
 	def calculate_similarity reviews1_arg, reviews2_arg
-		raise(ReviewCountMismatch, "The length of each review collection must be equal") if reviews1_arg.length != reviews2_arg.length
+    raise(ReviewCountMismatch, "The length of each review collection must be equal") if reviews1_arg.length != reviews2_arg.length
 		reviews1 = reviews1_arg.dup
 		reviews2 = reviews2_arg.dup
 
@@ -27,4 +28,3 @@ class ReviewComparator
 	end
 end
 
-class ReviewCountMismatch; end
