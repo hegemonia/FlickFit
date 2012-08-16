@@ -6,7 +6,10 @@ class Genre < ActiveRecord::Base
     "Horror",
     "Comedy",
     "Family",
-    "Drama"
+    "Drama",
+    "Animation",
+    "War",
+    "Crime"
   ]
 
   Filters = PrimaryTypes + ["Other"]
