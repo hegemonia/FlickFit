@@ -9,11 +9,12 @@ class Movie < ActiveRecord::Base
   validates :runtime, :numericality => { :only_integer => true, :less_than => 1000 }
   validates :year, :numericality => { :only_integer => true, :greater_than => 999, :less_than => 10000 }
 
-  def self.with_genre genre
-    if genre == "Other"
+  def self.with_genre primary_genre_type
+    if primary_genre_type == "Other"
       joins("LEFT OUTER JOIN genres_movies ON genres_movies.movie_id = movies.id LEFT OUTER JOIN genres ON genres.id = genres_movies.genre_id").uniq
     else
-      joins(:genres).where(:genres => {:name => genre})
+      genres = primary_genre_type.split('/')
+      joins(:genres).where("genres.name in (?)", genres)
     end
   end
 
