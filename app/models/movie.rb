@@ -11,7 +11,8 @@ class Movie < ActiveRecord::Base
 
   def self.with_genre primary_genre_type
     if primary_genre_type == "Other"
-      joins("LEFT OUTER JOIN genres_movies ON genres_movies.movie_id = movies.id LEFT OUTER JOIN genres ON genres.id = genres_movies.genre_id").uniq
+      joins("LEFT OUTER JOIN genres_movies ON genres_movies.movie_id = movies.id LEFT OUTER JOIN genres ON genres.id = genres_movies.genre_id").
+        where("genres.name IS NULL OR genres.name NOT IN (?)", Genre::PrimaryTypes).uniq
     else
       genres = primary_genre_type.split('/')
       joins(:genres).where("genres.name in (?)", genres)
