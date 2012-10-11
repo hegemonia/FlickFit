@@ -49,7 +49,7 @@
 				Predicted Rating: <%= predicted_score %>
 			</span>
       <span>
-        Difference: <%= (predicted_score - average_score) if predicted_score && average_score %>
+        Difference: <%= (predicted_score - average_score).round(2) if predicted_score && average_score %>
       </span>
 		</div>
 
