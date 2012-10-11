@@ -39,13 +39,18 @@
       <%= f.label :confidence, 'strongly', :value => 3 %>
     </div>
 
+    <% average_score = calculate_average_score(review) %>
+    <% predicted_score = calculate_prediction_score(review, @peer_scores) %>
 		<div>
 			<span style="padding-right:20px">
-				Average User Rating: <%= calculate_average_score(review) %> (<%= number_of_ratings_for(review.movie) %> total ratings)
+				Average User Rating: <%= average_score %> (<%= number_of_ratings_for(review.movie) %> total ratings)
 			</span>
-			<span>
-				Predicted Rating: <%= calculate_prediction_score(review, @peer_scores) %>
+			<span style="padding-right:20px">
+				Predicted Rating: <%= predicted_score %>
 			</span>
+      <span>
+        Difference: <%= (predicted_score - average_score) if predicted_score && average_score %>
+      </span>
 		</div>
 
 		<% if review.id? %>
