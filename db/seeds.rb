@@ -6,31 +6,31 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Movie.create :title => "Anchorman"
-Movie.create :title => "Armageddon"
-Movie.create :title => "Finding Nemo"
-Movie.create :title => "Independence Day"
-Movie.create :title => "Kill Bill: Vol. 1"
-Movie.create :title => "Lord of the Rings: The Return of the King"
-Movie.create :title => "Lord of the Rings: The Two Towers"
-Movie.create :title => "Lost in Translation"
-Movie.create :title => "Miss Congeniality"
-Movie.create :title => "Napoleon Dynamite"
-Movie.create :title => "Pearl Harbor"
-Movie.create :title => "Pirates of the Caribbean"
-Movie.create :title => "The Day After Tomorrow"
-Movie.create :title => "Troy"
-Movie.create :title => "The Green Mile"
-Movie.create :title => "Pirates of the Caribbean II"
-Movie.create :title => "The Patriot"
-Movie.create :title => "The Royal Tenenbaums"
-Movie.create :title => "The Shawshank Redemption"
-Movie.create :title => "Titanic"
-Movie.create :title => "Transformers I"
-Movie.create :title => "Transformers II"
-Movie.create :title => "Transformers III"
-Movie.create :title => "Harry Potter 7 part 1"
-Movie.create :title => "Harry Potter 7 part 2"
+Movie.create :title => "Anchorman", :runtime => 200, :year => 2000
+Movie.create :title => "Armageddon", :runtime => 200, :year => 2000
+Movie.create :title => "Finding Nemo", :runtime => 200, :year => 2000
+Movie.create :title => "Independence Day", :runtime => 200, :year => 2000
+Movie.create :title => "Kill Bill: Vol. 1", :runtime => 200, :year => 2000
+Movie.create :title => "Lord of the Rings: The Return of the King", :runtime => 200, :year => 2000
+Movie.create :title => "Lord of the Rings: The Two Towers", :runtime => 200, :year => 2000
+Movie.create :title => "Lost in Translation", :runtime => 200, :year => 2000
+Movie.create :title => "Miss Congeniality", :runtime => 200, :year => 2000
+Movie.create :title => "Napoleon Dynamite", :runtime => 200, :year => 2000
+Movie.create :title => "Pearl Harbor", :runtime => 200, :year => 2000
+Movie.create :title => "Pirates of the Caribbean", :runtime => 200, :year => 2000
+Movie.create :title => "The Day After Tomorrow", :runtime => 200, :year => 2000
+Movie.create :title => "Troy", :runtime => 200, :year => 2000
+Movie.create :title => "The Green Mile", :runtime => 200, :year => 2000
+Movie.create :title => "Pirates of the Caribbean II", :runtime => 200, :year => 2000
+Movie.create :title => "The Patriot", :runtime => 200, :year => 2000
+Movie.create :title => "The Royal Tenenbaums", :runtime => 200, :year => 2000
+Movie.create :title => "The Shawshank Redemption", :runtime => 200, :year => 2000
+Movie.create :title => "Titanic", :runtime => 200, :year => 2000
+Movie.create :title => "Transformers I", :runtime => 200, :year => 2000
+Movie.create :title => "Transformers II", :runtime => 200, :year => 2000
+Movie.create :title => "Transformers III", :runtime => 200, :year => 2000
+Movie.create :title => "Harry Potter 7 part 1", :runtime => 200, :year => 2000
+Movie.create :title => "Harry Potter 7 part 2", :runtime => 200, :year => 2000
 
 User.create :email => "Demo@test.com", :password => "password"
 User.create :email => "Richard@test.com", :password => "password"
