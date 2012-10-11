@@ -40,13 +40,12 @@
     </div>
 
 		<div>
-			<span>
+			<span style="padding-right:20px">
 				Average User Rating: <%= calculate_average_score(review) %> (<%= number_of_ratings_for(review.movie) %> total ratings)
-			<span>
-			<br />
+			</span>
 			<span>
 				Predicted Rating: <%= calculate_prediction_score(review, @peer_scores) %>
-			<span>
+			</span>
 		</div>
 
 		<% if review.id? %>
