@@ -1,10 +1,10 @@
- <% [:info, :error].each do |key| %>
-   <% if flash[key] %>
-   <div class="<%= key %>" id="flash">
-     <%= flash[key] %>
-   </div>
-   <% end %>
- <% end %>
+<% [:info, :error].each do |key| %>
+  <% if flash[key] %>
+  <div class="<%= key %>" id="flash">
+    <%= flash[key] %>
+  </div>
+  <% end %>
+<% end %>
 
 <%= render :partial => 'peer_scores' %>
 <%= render :partial => 'reviews/review', :collection => @reviews %>
