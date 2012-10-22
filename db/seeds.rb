@@ -57,4 +57,4 @@ User.create :email => "RTaudience@test.com", :password => "password"
 User.create :email => "MC@test.com", :password => "password"
 User.create :email => "MCuser@test.com", :password => "password"
 User.create :email => "IMDB@test.com", :password => "password"
-User.create :email => "admin@test.com", :password => "password", :admin => true
+User.create(:email => "admin@test.com", :password => "password", :admin => true)

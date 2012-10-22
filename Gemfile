@@ -10,6 +10,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'devise'
 gem 'will_paginate', '~> 3.0'
+gem 'acts_as_list'
 
 # Gems used only for assets and not required
 # in production environments by default.

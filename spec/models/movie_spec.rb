@@ -16,6 +16,17 @@ describe "Movie" do
       Movie.with_genre("Horror").should be_empty
     end
 
+    it "keeps the genres order" do
+      movie = FactoryGirl.create :movie
+      movie.genres = [Genre.create(:name => "Horror"), Genre.create(:name => "Adventure"), Genre.create(:name => "Comedy")]
+      movie.save!
+
+      result = Movie.with_genre("Comedy").all
+      result.size.should == 1
+      result.first.genres.first.name.should == "Horror"
+      result.first.genres.last.name.should == "Comedy"
+    end
+
     context "given the Other genre type" do
       it "should return movies without a primary genre type" do
         clown_boxing = Genre.create :name => "Clown Boxing"
