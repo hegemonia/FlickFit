@@ -25,7 +25,7 @@ test:
 production:
   adapter: postgresql
   database: ff_production
-#  username: flickfit
-#  password: flickfit
+  username: flickfit
+  password: flickfit
   encoding: utf8
   pool: 5
