@@ -1,5 +1,6 @@
   <div class="sort_by">
     <div style="float:left">
+      <%= link_to 'All', {:controller => 'home', :action => 'index'}, class: ('active-filter' unless @genre) %>
       <% @genres.each do |filter| %>
         <%= link_to filter, {:controller => 'home', :action => 'index', :genre => filter}, class: ('active-filter' if filter == @genre) %>
       <% end %>
