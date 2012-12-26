@@ -1,10 +1,10 @@
 <div class="peer_score_container">
-	<h4>My peer fit scores (higher is closer):</h4>
-	<% @peer_scores.each do |peer, score| %>
-		<%= peer.email %> (<%= score %>)
-	<% end %>
+  <h4>My peer fit scores (higher is closer):</h4>
+  <% @peer_scores.each do |peer, score| %>
+    <%= peer.email %> (<%= score %>)
+  <% end %>
 
-	<div class="sort_by">
+  <div class="sort_by">
     <div style="float:left">
       <%= link_to "Action/Adventure", {:controller => 'home', :action => 'index', :genre => 'Action/Adventure'}  %>
       <%= link_to "Drama",  {:controller => 'home', :action => 'index', :genre => 'Drama'}  %>
@@ -18,9 +18,9 @@
       <%= link_to "Other", {:controller => 'home', :action => 'index', :genre => 'Other'}  %>
     </div>
 
-		<%= form_tag home_path, :method => 'get' do %>
-			<span>Sort By:</span>
-			<%= select_tag :order_by, options_for_select(["title", "predicted rating", "average rating"]), :id => "order_reviews" %>
-		<% end %>
-	</div>
+    <%= form_tag home_path, :method => 'get' do %>
+      <span>Sort By:</span>
+      <%= select_tag :order_by, options_for_select(["title", "predicted rating", "average rating"]), :id => "order_reviews" %>
+    <% end %>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
   DEFAULT_CONFIDENCE = 2
-	belongs_to :movie
-	belongs_to :user
+  belongs_to :movie
+  belongs_to :user
 
   def self.with_movie_genre primary_genre_type
     if primary_genre_type == "Other"

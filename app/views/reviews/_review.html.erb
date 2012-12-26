@@ -1,8 +1,8 @@
 <div id="review_for_movie_<%= review.movie_id %>">
-	<%= form_for review, :remote => true, :namespace => "movie_#{review.movie_id}", :html => {:class => "review_container"} do |f| %>
-		<%= render 'movies/movie', :movie => review.movie %>
+  <%= form_for review, :remote => true, :namespace => "movie_#{review.movie_id}", :html => {:class => "review_container"} do |f| %>
+    <%= render 'movies/movie', :movie => review.movie %>
 
-		<%= f.hidden_field :movie_id %>
+    <%= f.hidden_field :movie_id %>
     <div class="ratings_container">
       <span style="font-weight:bold; font-size:.8em">
         Your Rating :
@@ -41,23 +41,23 @@
 
     <% average_score = calculate_average_score(review) %>
     <% predicted_score = calculate_prediction_score(review, @peer_scores) %>
-		<div>
-			<span style="padding-right:20px">
-				Average User Rating: <%= average_score %> (<%= number_of_ratings_for(review.movie) %> total ratings)
-			</span>
-			<span style="padding-right:20px">
-				Predicted Rating: <%= predicted_score %>
-			</span>
+    <div>
+      <span style="padding-right:20px">
+        Average User Rating: <%= average_score %> (<%= number_of_ratings_for(review.movie) %> total ratings)
+      </span>
+      <span style="padding-right:20px">
+        Predicted Rating: <%= predicted_score %>
+      </span>
       <span>
         Difference: <%= (predicted_score - average_score).round(2) if predicted_score && average_score %>
       </span>
-		</div>
+    </div>
 
-		<% if review.id? %>
-			<div>
-				<%= link_to "delete", review_path(review), :method=>:delete, :remote=>true, :class=>"remove", :confirm=>'Delete this review?' %>
+    <% if review.id? %>
+      <div>
+        <%= link_to "delete", review_path(review), :method=>:delete, :remote=>true, :class=>"remove", :confirm=>'Delete this review?' %>
 
-			</div>
-		<% end %>
-	<% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

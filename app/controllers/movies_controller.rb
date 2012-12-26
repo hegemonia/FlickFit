@@ -1,13 +1,13 @@
 class MoviesController < ApplicationController
-	before_filter :authenticate_user!
-	before_filter :require_admin_role
+  before_filter :authenticate_user!
+  before_filter :require_admin_role
 
   def index
-  	@movies = Movie.all
+    @movies = Movie.all
   end
 
   def new
- 		@movie = Movie.new
+    @movie = Movie.new
   end
 
   def create
@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
-  	@movie = Movie.find params[:id]
+    @movie = Movie.find params[:id]
   end
 
   def update
