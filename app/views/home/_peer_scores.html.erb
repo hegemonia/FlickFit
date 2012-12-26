@@ -3,27 +3,4 @@
   <% @peer_scores.each do |peer, score| %>
     <%= peer.email %> (<%= score %>)
   <% end %>
-
-  <div class="sort_by">
-    <div style="float:left">
-      <%= link_to "Action/Adventure", {:controller => 'home', :action => 'index', :genre => 'Action/Adventure'}  %>
-      <%= link_to "Drama",  {:controller => 'home', :action => 'index', :genre => 'Drama'}  %>
-      <%= link_to "Horror", {:controller => 'home', :action => 'index', :genre => 'Horror'}  %>
-      <%= link_to "Comedy", {:controller => 'home', :action => 'index', :genre => 'Comedy'}  %>
-      <%= link_to "Family", {:controller => 'home', :action => 'index', :genre => 'Family'}  %>
-      <%= link_to "Animation", {:controller => 'home', :action => 'index', :genre => 'Animation'}  %>
-      <%= link_to "War", {:controller => 'home', :action => 'index', :genre => 'War'}  %>
-      <%= link_to "Crime", {:controller => 'home', :action => 'index', :genre => 'Crime'}  %>
-      <%= link_to "Thriller", {:controller => 'home', :action => 'index', :genre => 'Thriller'}  %>
-      <%= link_to "Romance", {:controller => 'home', :action => 'index', :genre => 'Romance'}  %>
-      <%= link_to "Fantasy", {:controller => 'home', :action => 'index', :genre => 'Fantasy'}  %>
-      <%= link_to "Sci Fi", {:controller => 'home', :action => 'index', :genre => 'Sci Fi'}  %>
-      <%= link_to "Other", {:controller => 'home', :action => 'index', :genre => 'Other'}  %>
-    </div>
-
-    <%= form_tag home_path, :method => 'get' do %>
-      <span>Sort By:</span>
-      <%= select_tag :order_by, options_for_select(["title", "predicted rating", "average rating"]), :id => "order_reviews" %>
-    <% end %>
-  </div>
 </div>

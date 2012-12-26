@@ -1,0 +1,12 @@
+  <div class="sort_by">
+    <div style="float:left">
+      <% @genres.each do |filter| %>
+        <%= link_to filter, {:controller => 'home', :action => 'index', :genre => filter}, class: ('active-filter' if filter == @genre) %>
+      <% end %>
+    </div>
+
+    <%= form_tag home_path, :method => 'get' do %>
+      <span>Sort By:</span>
+      <%= select_tag :order_by, options_for_select(["title", "predicted rating", "average rating"]), :id => "order_reviews" %>
+    <% end %>
+  </div>
