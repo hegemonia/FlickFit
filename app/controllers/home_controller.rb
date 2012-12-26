@@ -9,13 +9,13 @@ class HomeController < ApplicationController
 
   def index
     genre = Genre::Filters.include?(params[:genre]) ? params[:genre] : nil
-    existing_reviews = (genre.present? ? Review.with_movie_genre(genre) : Review).where(:user_id => current_user.id)
+    existing_reviews = (genre.present? ? Review.with_movie_genre(genre).uniq : Review).where(:user_id => current_user.id)
     movie_relation = genre.present? ? Movie.with_genre(genre) : Movie
 
     unreviewed_movies = existing_reviews.any? ? movie_relation.where("movies.id not in (?)", existing_reviews.collect {|review| review.movie_id}) : movie_relation.all
 
     new_reviews = []
-    unreviewed_movies.each do |movie|
+    unreviewed_movies.uniq.each do |movie|
       new_reviews << Review.new(:movie => movie, :user => current_user)
     end
 

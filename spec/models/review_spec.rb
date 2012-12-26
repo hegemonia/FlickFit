@@ -1,7 +1,10 @@
 require 'spec_helper'
 
-describe "Review" do
-	context "with_movie_genre" do
+describe Review do
+  it { should belong_to :user }
+  it { should validate_presence_of :user }
+
+  context "with_movie_genre" do
     it "should return reviews of movies with the given genre" do
       horror_movie = FactoryGirl.create :movie
       horror_movie.genres = [Genre.create(:name => "Horror")]

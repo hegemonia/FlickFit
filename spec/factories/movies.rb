@@ -5,13 +5,7 @@ FactoryGirl.define do
     end
     runtime 111
     year 1996
+    genres { [FactoryGirl.create(:genre)] }
   end
 end
 
-FactoryGirl.define do
-  factory :review do
-    association :movie, factory: :movie
-    confidence 2
-    rating 3
-  end
-end
