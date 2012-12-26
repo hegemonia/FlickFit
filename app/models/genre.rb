@@ -12,10 +12,12 @@ class Genre < ActiveRecord::Base
     "War",
     "Crime",
     "Fantasy",
-    "Sci Fi"
+    "Sci Fi",
+    "Thriller",
+    "Romance"
   ]
 
-  Filters = PrimaryTypes + ["Action/Adventure", "Fantasy/Sci Fi", "Other"]
+  Filters = PrimaryTypes + ["Action/Adventure", "Other"]
 
   validates_presence_of :name
   validates_uniqueness_of :name
